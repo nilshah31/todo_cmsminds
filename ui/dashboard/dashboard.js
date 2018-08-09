@@ -20,23 +20,20 @@ angular
       }
       $http(req)
         .then(function(res) {
-          console.log(res)
           $scope.productlist = res.data;
         })
         .catch(function(err){
-          console.log(res)
         });
     }
     $scope.addNewProduct = function(){
-      console.log(checkForDuplicates())
       if(checkForDuplicates()){
         $scope.errMsg = "Product Already Exist with this name"
         return;
       }
-      if( !$scope.sku && 
-          !$scope.price && 
-          !$scope.isItAvble && 
-          !$scope.catagory &&
+      if( !$scope.sku || 
+          !$scope.price || 
+          !$scope.isItAvble || 
+          !$scope.catagory ||
           !$scope.varient){
             $scope.errMsg = "Please fill all the fields"
             return

@@ -12,14 +12,17 @@
   <div class="product-list-wrapepr">
     <div class="container">
       <div class="well">
+        <div class="table-responsive">
         <!--loader untill data gets display on the screen-->
-        <ul class="list-group list-group-product">
           <!--Listing all the Existing task using ng-reapet-->
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newProductModal">Add New Product</button>
+          <button type="button" 
+                  class="btn btn-success btn-lg" 
+                  data-toggle="modal" 
+                  data-target="#newProductModal"><i class="glyphicon glyphicon-plus"></i> Add New Product</button>
           <button type="button" class="btn btn-info btn-lg" ng-click="logout()">Logout</button>
           
           <br /><br />
-          <table class="table-condensed"  ng-if="productlist.length!==0" >
+          <table class="table"  ng-if="productlist.length!==0" >
             <tr>
               <th>No</th>
               <th>Image</th>
@@ -35,7 +38,7 @@
               <td>{{element.sku}}</td>
               <td>{{element.price}}</td>
               <td>{{getKeysforDisplay(element.varient)}}</td>
-              <td>{{element.isavailable}}</td>
+              <td>{{element.isavailable?'Yes':'No'}}</td>
               <td>
                 <button class="btn btn-primary edit-item">
                   <span class="glyphicon glyphicon-edit" ng-click="openEditProductModal($index)"></span>
@@ -46,7 +49,8 @@
               </td>
             </tr>
           </table>
-        </ul>
+        </div>
+        
         <!--Custom Message when list is empty-->
         <h3 ng-if="productlist.length===0" class="text-center">Your product list is empty</h3>
       </div>
