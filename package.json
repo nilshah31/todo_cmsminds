@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nilshah31/todo_cmsminds#readme",
   "dependencies": {
+    "angular-ui-router": "^1.0.19",
     "angularjs": "0.0.1",
     "circular-json": "^0.5.5",
     "express": "^4.16.3",

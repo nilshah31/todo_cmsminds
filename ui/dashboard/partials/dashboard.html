@@ -1,0 +1,127 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="app" ng-controller="dashboardCtrl">
+  <!--Product List Div-->
+  <div class="product-list-wrapepr">
+    <div class="container">
+      <div class="well">
+        <!--loader untill data gets display on the screen-->
+        <ul class="list-group list-group-product">
+          <!--Listing all the Existing task using ng-reapet-->
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newProductModal">Add New Product</button>
+          <button type="button" class="btn btn-info btn-lg" ng-click="logout()">Logout</button>
+          
+          <br /><br />
+          <table class="table-condensed"  ng-if="productlist.length!==0" >
+            <tr>
+              <th>No</th>
+              <th>Image</th>
+              <th>SKU</th>
+              <th>Price</th>
+              <th>Varient</th>
+              <th>Is It Available?</th>
+              <th>Action</th>
+            </tr>  
+            <tr ng-repeat="element in productlist track by $index">
+              <td>{{$index+1}}</td>
+              <td>{{element.img_path}}</td>
+              <td>{{element.sku}}</td>
+              <td>{{element.price}}</td>
+              <td>{{getKeysforDisplay(element.varient)}}</td>
+              <td>{{element.isavailable}}</td>
+              <td>
+                <button class="btn btn-primary edit-item">
+                  <span class="glyphicon glyphicon-edit" ng-click="openEditProductModal($index)"></span>
+                </button>
+                <button class="btn btn-primary trash-item">
+                    <span class="glyphicon glyphicon-remove" ng-click="deleteProduct($index)"></span>
+                  </button>
+              </td>
+            </tr>
+          </table>
+        </ul>
+        <!--Custom Message when list is empty-->
+        <h3 ng-if="productlist.length===0" class="text-center">Your product list is empty</h3>
+      </div>
+    </div>
+  </div>
+  <!--end of TO DO List Div-->
+  <!-- New Product Modal-->
+  <!-- Modal -->
+  <div class="modal fade" id="newProductModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button ng-click="closeEditProductModal()" type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Product</h4>
+        </div>
+        <div class="modal-body">
+          <span class="alert-danger">{{errMsg}}</span>
+          <form class="form">
+            <div class="form-group">
+              SKU   : <input ng-disabled="isEditing" type="text" ng-model="sku" required /><br />
+            </div>
+            <div class="form-group">
+              Price : <input type="number" ng-model="price" required /><br />
+            </div>
+            <div class="form-group">
+              is it available? : 
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="yes" value="true" ng-model="isItAvble" required>
+                      Yes
+                  </label>
+              </div>
+              <div class="radio">
+                  <label>
+                      <input type="radio" name="no" value="false" ng-model="isItAvble" required>
+                      No
+                  </label>
+              </div>
+            </div>
+            <div class="form-group">
+              Catagory : 
+                <select ng-model="catagory" required>
+                  <option>Cat 1</option>
+                  <option>Cat 2</option>
+                  <option>Cat 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+              Varient  :
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="v1" ng-model="varient.v1"> V1
+              </label>
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="v2" ng-model="varient.v2"> V2
+              </label>
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="v3" ng-model="varient.v3"> V3
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" ng-click="isEditing?editProduct():addNewProduct()" class="btn btn-success">Submit</button>
+          <button type="button" ng-click="closeEditProductModal()" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>  
+  <!-- END NEW PRODUCT-->
+</body>
+
+<script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js"></script>
+<script src="/ui/dashboard/dashboard.js"></script>
+
+</html>

@@ -1,7 +1,7 @@
 module.exports = (app) => {
   app.post("/api/auth/login",function(req,res){
     if(req.query.uname==='admin' && req.query.password==='admin'){
-      res.json({message:"Welcome Admin"});
+      res.json({message:"Welcome User"});
     }
     else{
       return res.status(400).send({

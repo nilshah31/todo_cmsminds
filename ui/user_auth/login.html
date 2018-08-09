@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta chrset="UTF 8">
+  <title>Login Application</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+</head>
+<body ng-app="app">
+  <h1 ng-controller="loginCtrl">
+    <div class="col-md-12">
+      <h3>Login Page</h3>
+      <form ng-submit="login()" class="form">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="username" placeholder="username" required="" />
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" ng-model="password" placeholder="password" required="" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Login</button>
+            <span class="text-danger">{{ error }}</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </h1>
+  <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+  <script src="./ui/user_auth/login.js"></script>
+</body>
+</html>
