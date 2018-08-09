@@ -11,5 +11,3 @@ Start the server: npm start<br>
 
 Usename : admin<br>
 Password : admin <br>
-
-# This has been implemented with mongodb
