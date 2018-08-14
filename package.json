@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha",
-    "test-jenkins": "JUNIT_REPORT_PATH=/jenkins-test-results.xml mocha --colors --reporter mocha-jenkins-reporter"
+    "test-jenkins": "jenkins-test-results.xml mocha --colors --reporter mocha-jenkins-reporter"
   },
   "repository": {
     "type": "git",
